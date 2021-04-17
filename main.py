@@ -14,7 +14,9 @@ app.secret_key = 'MBM'
 def index():
     return render_template('index.html')
 
-
+@app.route('/twitter')
+def twitterAnalysis():
+    return render_template('index.html')
 def execute():
     # Get the folder name where the Facebook, Instagram, LinkedIn, Twitter, and Weibo folders are stored
     with open('key_params.json', 'r') as f:
