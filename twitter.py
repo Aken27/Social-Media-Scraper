@@ -8,10 +8,10 @@ if __name__ == "__main__":
     # Read in the credentials and parameters from the key_params.json file
     with open('key_params.json', 'r') as f:
         keys = ast.literal_eval(f.read())
-        api_key = keys['keys']['Twitter']['api_key']
-        api_secret = keys['keys']['Twitter']['api_secret']
-        access_token = keys['keys']['Twitter']['access_token']
-        access_token_secret = keys['keys']['Twitter']['access_token_secret']
+        api_key = "p55m9Q258cLWQnsQ786LXuUyc"
+        api_secret = "vF3E9mEfZg8ddeR3dTEVSoKj1iZw3JQXDyKj4v4xlasgmipsgr"
+        access_token = "1075334164704944128-IE2kW69CxUBvXReKGIe9dI2QUs6r0Z"
+        access_token_secret = "XZ1gnMw0EIvKrOvuXTYva4z8LCjKh5qGiyZ6cAz3B9AI2"
         twitter_handle = keys['parameters']['Twitter']['handle']
         company = keys['parameters']['main']['company_folder']
 
