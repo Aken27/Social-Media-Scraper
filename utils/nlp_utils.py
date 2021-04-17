@@ -26,43 +26,14 @@ class _BosonNLPWrapper(object):
 
 
     def get_sentiment(self, text):
-        """
-        Performs sentiment analysis on a text passage (works for Chinese text).
-        See: http://docs.bosonnlp.com/sentiment.html
-
-        Parameters
-        ----------
-        text (string): text passage to be analyzed for sentiment
-
-
-        Returns
-        -------
-        dictionary with 'positive' and 'negative' as keys with their respective weights as values
-
-        >>> nlp = BosonNLPWrapper('')
-        >>> nlp.get_sentiment('不要打擾我')
-        {'positive': 0.3704911989140307, 'negative': 0.6295088010859693}
-        >>> nlp.get_sentiment('我很高興跟你見面')
-        {'positive': 0.856280735624867, 'negative': 0.14371926437513308}
-        """
+        
         pos, neg = self.nlp.sentiment(text)[0]
 
         return {'positive': pos, 'negative': neg}
 
 
     def classify_news(self, text):
-        """
-        Classifies news text into 14 different categories.
-        See: http://docs.bosonnlp.com/classify.html
-
-        Parameters
-        ----------
-        text (string): text passage to classify into news categories defined in news_categories
-
-        Returns
-        -------
-        one of the 14 categories in news_categories that the text was classified into
-        """
+        
         numbering = range(len(_BosonNLPWrapper.news_categories))
         cats_dict = dict(zip(numbering, _BosonNLPWrapper.news_categories))
 
@@ -72,24 +43,7 @@ class _BosonNLPWrapper(object):
 
 
     def extract_keywords(self, text, top_k=3):
-        """
-        Extracts the top k keywords and the weight of each word in the text.
-        See: http://docs.bosonnlp.com/keywords.html
-
-        Parameters
-        ----------
-        text (string): text passage from which to extract keywords
-        top_k (integer): number of keywords to return
-
-        Returns
-        -------
-        list of key-value pairs {word: weight}
-
-
-        >>> nlp = BosonNLPWrapper('')
-        >>> nlp.extract_keywords('我最愛老虎堂，奶茶香醇，波霸彈Q 好香的黑糖味')
-        [{'波霸彈': 0.5980681967308248}, {'黑糖': 0.4699792421671365}, {'香醇': 0.4497614275300947}]
-        """
+       
         result = self.nlp.extract_keywords(text, top_k)  # outputs in sorted order of weight
 
         return [{result[i][1]: result[i][0]} for i in range(len(result))]
